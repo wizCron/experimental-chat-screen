@@ -16,5 +16,8 @@ pip install time
 ### How to run
 
 Just start the chat-screen.py with any python 3 interpreter. The interpreter needs admin rights for the input to work. I use the mac terminal with sudo.
+```shell
+sudo python3 chat-screen.py
+```
 
 By default you can use the arrow keys to controll the player icon.
