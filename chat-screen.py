@@ -9,6 +9,7 @@ screen_background = '□'
 player_icon = '■'
 player_position_h = 5   # y coordinate start position
 player_position_l = 5   # x coordinate start position
+line_icon = '*'
 
 # CONTROLLS
 up = 'up'
@@ -16,30 +17,44 @@ down = 'down'
 left = 'left'
 right = 'right'
 
-def draw_screen(height, length):
-    def draw_line(height):
-        line = ''
-        n = 0
-        while n != length:
-            if player_position_h == height and player_position_l == n:
-                line += player_icon
-                n += 1
-            else:
-                line += screen_background
-                n += 1
-        print(line)
+# OBJECTS
+first_line = {
+    'x1': '1',
+    'y1': '3',
+    'x2': '8',
+    'y2': '8'
+}
 
-    n = 0
-    while n != height:
-        draw_line(n)
-        n += 1
+class draw():
+    def screen(height, length):
+        def row(height):
+            row = ''
+            n = 0
+            while n != length:
+                if player_position_h == height and player_position_l== n:
+                    row += player_icon
+                    n += 1
+                else:
+                    row += screen_background
+                    n += 1
+            print(row)
+
+        n = 0
+        while n != height:
+            row(n)
+            n += 1
+    
+    def line(coordinates):
+        n = coordinates['y1']
+        # FIX ME
 
 def screen():
     while True:
-        print(" ")
-        print("--------------")
-        print(" ")
-        draw_screen(screen_height, screen_length)
+        print(' ')
+        print('-'*screen_length)
+        print(' ')
+        draw.line(first_line)
+        draw.screen(screen_height, screen_length)
         time.sleep(1 / refresh_rate)
 
 def input():
